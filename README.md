@@ -25,3 +25,46 @@ This project demonstrates three key ways Blazor components communicate:
    ```bash
    git clone https://github.com/stevsharp/BlazorComponentComms.git
    cd BlazorComponentComms
+
+
+---
+
+## ▶️ Getting Started
+
+1. Clone this repo:
+
+   ```bash
+   git clone https://github.com/stevsharp/BlazorComponentComms.git
+   cd BlazorComponentComms
+
+✍️ Code Overview (Inside Index.razor)
+razor
+Copy
+Edit
+<InputText
+    Value="p.Name"
+    ValueChanged="(string val) => OnNameChanged(p, val)"
+    ValueExpression="() => p.Name" />
+csharp
+Copy
+Edit
+private void OnNameChanged(Product p, string val)
+{
+    p.Name = val;
+    changedIds.Add(p.Id);
+}
+🧠 Learnings
+How to use ValueChanged instead of @bind for full control
+
+How to track changes to specific objects in a list
+
+Use of @ref to access child logic from parent
+
+🤝 Contributions
+Feel free to open a PR to expand this demo with:
+
+EventCallback version
+
+CascadingParameter version
+
+Visual diffing and row highlighting
