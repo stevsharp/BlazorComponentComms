@@ -43,3 +43,7 @@ This project demonstrates three key ways Blazor components communicate:
 ✍️ ValueChanged: Fine-grained control over data binding
 
 🔄 Update with StateHasChanged()
+
+## Connect with Me
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue)](https://www.linkedin.com/in/spyros-ponaris-913a6937/)
