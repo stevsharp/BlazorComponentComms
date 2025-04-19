@@ -1,0 +1,32 @@
+﻿@page "/cascading"
+
+<h3>CascadingParameter Example with Two-Way Communication</h3>
+
+<CascadingValue Value="sharedProduct" IsFixed="false">
+    <CascadingValue Value="(Action<Product>)OnProductUpdated">
+        <ProductEditor />
+    </CascadingValue>
+</CascadingValue>
+
+<hr />
+
+<h4>Parent Preview</h4>
+<p><strong>Name:</strong> @sharedProduct.Name</p>
+<p><strong>Description:</strong> @sharedProduct.Description</p>
+
+@code {
+    private Product sharedProduct = new()
+    {
+        Id = 99,
+        Name = "Shared Product",
+        Description = "Shared through CascadingParameter"
+    };
+
+    private void OnProductUpdated(Product product)
+    {
+
+        this.sharedProduct = product;
+
+        StateHasChanged();
+    }
+}

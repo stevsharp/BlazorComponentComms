@@ -1,0 +1,11 @@
+﻿@code {
+    [Parameter] public Product? Product { get; set; }
+}
+
+@if (Product != null)
+{
+    <div>
+        <h4>@Product.Name</h4>
+        <p>@Product.Description</p>
+    </div>
+}

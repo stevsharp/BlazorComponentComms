@@ -1,0 +1,28 @@
+﻿<h4>Edit Product (Child Component)</h4>
+
+@if (Product != null)
+{
+    <div>
+        <label>Name: </label>
+        <input @bind="Product.Name" class="form-control" />
+        <br />
+        <label>Description: </label>
+        <textarea @bind="Product.Description" class="form-control"></textarea>
+        <br />
+        <button class="btn btn-primary" @onclick="NotifyParent">Notify Parent</button>
+    </div>
+}
+else
+{
+    <p>No product provided.</p>
+}
+
+@code {
+    [CascadingParameter] public Product? Product { get; set; }
+    [CascadingParameter] public Action<Product>? OnUpdate { get; set; }
+
+    private void NotifyParent()
+    {
+        OnUpdate?.Invoke(this.Product ?? new Product());
+    }
+}

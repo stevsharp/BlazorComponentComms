@@ -1,0 +1,37 @@
+﻿@page "/ref-example"
+
+<h3>Ref Example – Get Changed Products</h3>
+
+<ProductEditorRef Products="products" @ref="editorRef" />
+
+<button class="btn btn-primary mt-3" @onclick="GetChanges">Get Changed Products</button>
+
+@if (changedProducts.Any())
+{
+    <h4>Changed Products:</h4>
+    <ul>
+        @foreach (var product in changedProducts)
+        {
+            <li>@product.Name - @product.Description</li>
+        }
+    </ul>
+}
+
+@code {
+    private List<Product> products = new()
+    {
+        new() { Id = 1, Name = "Laptop", Description = "Fast device" },
+        new() { Id = 2, Name = "Phone", Description = "Smartphone" }
+    };
+
+    private ProductEditorRef? editorRef;
+    private List<Product> changedProducts = new();
+
+    private void GetChanges()
+    {
+        if (editorRef is not null)
+        {
+            changedProducts = editorRef.GetChangedProducts();
+        }
+    }
+}

@@ -1,0 +1,73 @@
+﻿@using BlazorComponentComms.Models
+
+<h4>Editable Product List (Child Component)</h4>
+
+@if (Products != null)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Products)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>
+                        <InputText class="form-control"
+                                   Value="@p.Name"
+                                   ValueChanged="(string val) => OnNameChanged(p, val)"
+                                   ValueExpression="() => p.Name" />
+                    </td>
+                    <td>
+                        <InputText class="form-control"
+                                   Value="@p.Description"
+                                   ValueChanged="(string val) => OnDescriptionChanged(p, val)"
+                                   ValueExpression="() => p.Description" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter] public List<Product>? Products { get; set; }
+
+    private HashSet<int> changedIds = new();
+
+    private void OnNameChanged(Product product, string newVal)
+    {
+        product.Name = newVal;
+        MarkAsChanged(product);
+    }
+
+    private void OnDescriptionChanged(Product product, string newVal)
+    {
+        product.Description = newVal;
+        MarkAsChanged(product);
+    }
+
+    private void MarkAsChanged(Product product)
+    {
+        if (product != null)
+        {
+            changedIds.Add(product.Id);
+            StateHasChanged();
+        }
+    }
+
+    public List<Product> GetChangedProducts()
+    {
+        return Products?.Where(p => changedIds.Contains(p.Id)).ToList() ?? new();
+    }
+
+    public List<Product> GetAllProducts()
+    {
+        return Products ?? new();
+    }
+}

@@ -1,0 +1,19 @@
+﻿<ul>
+    @foreach (var p in products)
+    {
+        <li @onclick="() => OnProductSelected.InvokeAsync(p)">
+            @p.Name
+        </li>
+    }
+</ul>
+
+@code {
+    [Parameter] 
+    public EventCallback<Product> OnProductSelected { get; set; }
+
+    private List<Product> products = new()
+    {
+        new() { Id = 1, Name = "Phone", Description = "Great phone" },
+        new() { Id = 2, Name = "Tablet", Description = "Portable device" }
+    };
+}

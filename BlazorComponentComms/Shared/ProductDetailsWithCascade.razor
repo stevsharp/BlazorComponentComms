@@ -1,0 +1,13 @@
+﻿
+@if (Product != null)
+{
+    <div>
+        <h4>[Cascade] @Product.Name</h4>
+        <p>@Product.Description</p>
+    </div>
+}
+
+@code {
+    [CascadingParameter] 
+    public Product? Product { get; set; }
+}

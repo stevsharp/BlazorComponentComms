@@ -1,0 +1,14 @@
+﻿@page "/event-callback"
+
+<ProductList OnProductSelected="ShowDetails" />
+
+<ProductDetails Product="selectedProduct" />
+
+@code {
+    private Product? selectedProduct;
+
+    private void ShowDetails(Product product)
+    {
+        selectedProduct = product;
+    }
+}
