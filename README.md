@@ -1,4 +1,4 @@
-# 📘 BlazorComponentComms
+# 📘 Blazor Component Communication
 
 A demo Blazor application showcasing **component communication patterns** in both **Blazor WebAssembly** and **Blazor Server**.
 
