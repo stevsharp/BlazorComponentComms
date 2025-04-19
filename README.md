@@ -31,3 +31,15 @@ This project demonstrates three key ways Blazor components communicate:
    ```bash
    git clone https://github.com/stevsharp/BlazorComponentComms.git
    cd BlazorComponentComms
+
+🧠 Learnings
+
+📤 EventCallback: Raise events from child to parent
+
+🌐 CascadingParameter: Share models down the tree (with reactivity)
+
+📞 @ref: Access child methods directly from the parent
+
+✍️ ValueChanged: Fine-grained control over data binding
+
+🔄 Update with StateHasChanged()
