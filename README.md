@@ -1,5 +1,8 @@
 # 📘 Blazor Component Communication
 
+You can read the full article at :
+https://dev.to/stevsharp/mastering-blazor-component-communication-eventcallback-cascadingparameter-and-ref-explained-eig
+
 A demo Blazor application showcasing **component communication patterns** in both **Blazor WebAssembly** and **Blazor Server**.
 
 ---
