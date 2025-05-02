@@ -1,0 +1,38 @@
+﻿@page "/two-way-binding-example"
+
+<h3>Two-Way Binding example – Parent and child values update at the same time</h3>
+
+<h4 class="text-decoration-underline">Buttons (All buttons are bound to the same value)</h4>
+
+<div>Parent Counter is <strong>@CounterValue</strong></div>
+
+<div class="mt-4">Child Button 1:</div>
+<ChildCounter @bind-CounterValue="CounterValue" />
+
+<div class="mt-4">Child Button 2:</div>
+<ChildCounter @bind-CounterValue="CounterValue" />
+
+<div class="mt-4">
+    <button class="btn btn-secondary" @onclick="HandleResetClick">Reset Counters</button>
+</div>
+
+<h4 class="mt-5 text-decoration-underline">Inputs (All inputs are bound to the same value)</h4>
+
+<p class="my-2">Parent Text is <strong>@TextValue</strong></p>
+
+<div>Input 1:</div>
+<ChildTextField @bind-Value="TextValue" />
+
+<div class="mt-3">Input 2:</div>
+<ChildTextField @bind-Value="TextValue" />
+
+@code {
+    public int CounterValue { get; set; } = 0;
+
+    private void HandleResetClick(MouseEventArgs args)
+    {
+        CounterValue = 0;
+    }
+
+    public string TextValue { get; set; } = "Initial value";
+}

@@ -1,0 +1,16 @@
+﻿<input type="text" value="@Value" @oninput="HandleChange" class="form-control" style="max-width: 300px" />
+
+@code {
+    // The EventCallback's name must be [variable name]Changed by Blazor convention.
+    // The parent binds the value to the child like <ChildCounter @bind-CounterValue="ParentValue" />
+    // This example does not work by binding to a <InputText ... /> component. It requires the default html input.
+
+    [Parameter] public string Value { get; set; }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+
+    private async Task HandleChange(ChangeEventArgs e)
+    {
+        var newValue = e.Value?.ToString();
+        await ValueChanged.InvokeAsync(newValue);
+    }
+}
