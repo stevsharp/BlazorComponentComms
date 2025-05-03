@@ -1,0 +1,21 @@
+﻿<div class="border p-2">
+    <div>
+        Child Counter is <strong>@CounterValue</strong>
+    </div>
+    <button class="btn btn-primary" @onclick=UpdateCurrentCounterValue>Increment</button>
+</div>
+
+
+@code {
+    // The EventCallback's name must be [variable name]Changed by Blazor convention.
+    // The parent binds the value to the child like <ChildCounter @bind-CounterValue="ParentValue" />
+
+    [Parameter] public int CounterValue { get; set; }
+    [Parameter] public EventCallback<int> CounterValueChanged { get; set; }
+
+    async Task UpdateCurrentCounterValue()
+    {
+        CounterValue++;
+        await CounterValueChanged.InvokeAsync(CounterValue);
+    }
+}
